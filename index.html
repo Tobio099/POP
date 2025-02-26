@@ -10,20 +10,8 @@
             background-color: #fce4ec;
             text-align: center;
         }
-
-        /* Navigation Bar */
-        nav {
-            background-color: #ff4081;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            margin: 0 10px;
-        }
-
-        /* Pop-up box */
+        
+        /* Popup box */
         .popup {
             display: none;
             position: fixed;
@@ -38,15 +26,8 @@
             width: 300px;
         }
 
-        /* Cat image */
-        .popup img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        /* Buttons */
-        .popup button {
+        /* Button styles */
+        button {
             background-color: #ff4081;
             color: white;
             border: none;
@@ -54,55 +35,66 @@
             cursor: pointer;
             border-radius: 5px;
             font-size: 16px;
-            margin: 5px;
         }
 
-        .popup button:hover {
+        button:hover {
             background-color: #e91e63;
         }
 
-        /* No button special effects */
-        #no-btn {
+        /* No button growing effect */
+        #noButton {
+            font-size: 16px;
             transition: all 0.3s ease;
         }
 
+        /* Image styling */
+        #startImage, #yesImage {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        #yesImage {
+            display: none;
+        }
     </style>
 </head>
 <body onload="showPopup()">
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="contact.html">Contact</a>
-    </nav>
+    <!-- First Image -->
+    <img id="startImage" src="b8a6789b70be1cc636b69157a01ddd7f.jpg" alt="First Image">
 
-    <!-- Pop-up box -->
+    <!-- Pop-up -->
     <div class="popup" id="popup">
-        <img src="https://placekitten.com/100/100" alt="Cute Cat">
         <h2>Will you marry me? ❤️</h2>
-        <button onclick="yesClicked()">Yes!</button>
-        <button id="no-btn" onclick="noClicked()">No</button>
+        <button onclick="yesClick()">Yes!</button>
+        <button id="noButton" onclick="noClick()">No</button>
     </div>
+
+    <!-- Image for YES Click -->
+    <img id="yesImage" src="e9f282e7d6b23f89ece519d0c50235db.jpg" alt="Yes Image">
 
     <script>
         function showPopup() {
             document.getElementById("popup").style.display = "block";
         }
 
-        function yesClicked() {
-            alert("Yayyyy 🎀😳💕");
+        function yesClick() {
             document.getElementById("popup").style.display = "none";
+            document.getElementById("startImage").style.display = "none";
+            document.getElementById("yesImage").style.display = "block";
+            alert("Yayyyy 🎀😳💕");
         }
 
-        let noSize = 16;
-        function noClicked() {
-            let noBtn = document.getElementById("no-btn");
-            noSize += 5;
-            noBtn.style.fontSize = noSize + "px";
+        function noClick() {
+            let noButton = document.getElementById("noButton");
+            let currentSize = window.getComputedStyle(noButton).fontSize;
+            let newSize = parseFloat(currentSize) * 1.3; // Increase size
 
-            if (noSize > 50) {
-                noBtn.style.display = "none"; // Make it disappear
+            if (newSize > 60) {
+                noButton.style.display = "none"; // Hide button when too big
+            } else {
+                noButton.style.fontSize = newSize + "px";
             }
         }
     </script>
