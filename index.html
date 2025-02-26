@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WILL YOU MARRY ME?🎀💍</title>
+    <title>Will You Marry Me?</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,14 +59,20 @@
         }
     </style>
 </head>
-<body onload="showPopup()">
+<body onload="startPage()">
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="There_Is_a_Light_That_Never_Goes_Out__2011_Remaster_.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <!-- First Image -->
     <img id="startImage" src="b8a6789b70be1cc636b69157a01ddd7f.jpg" alt="First Image">
 
     <!-- Pop-up -->
     <div class="popup" id="popup">
-        <h2>WILL YOU MARRY ME?🎀💍</h2>
+        <h2>Will you marry me?🎀💍</h2>
         <button onclick="yesClick()">Yes!</button>
         <button id="noButton" onclick="noClick()">No</button>
     </div>
@@ -75,8 +81,9 @@
     <img id="yesImage" src="e9f282e7d6b23f89ece519d0c50235db.jpg" alt="Yes Image">
 
     <script>
-        function showPopup() {
+        function startPage() {
             document.getElementById("popup").style.display = "block";
+            document.getElementById("bgMusic").play(); // Start music
         }
 
         function yesClick() {
