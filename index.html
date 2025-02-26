@@ -1,85 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Will You Marry Me?</title>  
-    <style>  
-        body {  
-            font-family: Arial, sans-serif;  
-            background-color: #fce4ec;  
-            text-align: center;  
-            margin: 0;  
-        }  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Marry Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec;
+            text-align: center;
+        }
 
-        /* Navigation bar */
-        nav {  
-            background-color: #ff4081;  
-            padding: 10px;  
-        }  
+        /* Navigation Bar */
+        nav {
+            background-color: #ff4081;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
 
-        nav a {  
-            color: white;  
-            text-decoration: none;  
-            margin: 0 10px;  
-            font-size: 18px;  
-        }  
+        /* Pop-up box */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
 
-        nav a:hover {  
-            text-decoration: underline;  
-        }  
+        /* Cat image */
+        .popup img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
 
-        /* Pop-up box */  
-        .popup {  
-            display: none;  
-            position: fixed;  
-            top: 50%;  
-            left: 50%;  
-            transform: translate(-50%, -50%);  
-            background: white;  
-            padding: 20px;  
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
-            border-radius: 10px;  
-            text-align: center;  
-            width: 300px;  
-        }  
+        /* Buttons */
+        .popup button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
 
-        /* Cat image */  
-        .popup img {  
-            width: 100px;  
-            height: auto;  
-            margin-bottom: 10px;  
-        }  
+        .popup button:hover {
+            background-color: #e91e63;
+        }
 
-        /* Button */  
-        .popup button {  
-            background-color: #ff4081;  
-            color: white;  
-            border: none;  
-            padding: 10px 15px;  
-            cursor: pointer;  
-            border-radius: 5px;  
-            font-size: 16px;  
-            transition: 0.3s;  
-        }  
-
-        .popup button:hover {  
-            background-color: #e91e63;  
-        }  
-
-        /* No button */
-        #noBtn {  
-            background-color: #ff1744;  
-            margin-left: 10px;  
-        }  
+        /* No button special effects */
+        #no-btn {
+            transition: all 0.3s ease;
+        }
 
     </style>
-</head>  
-
-<body onload="showPopup()">  
+</head>
+<body onload="showPopup()">
 
     <!-- Navigation Bar -->
     <nav>
         <a href="index.html">Home</a> |
         <a href="about.html">About</a> |
-        <a
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Pop-up box -->
+    <div class="popup" id="popup">
+        <img src="https://placekitten.com/100/100" alt="Cute Cat">
+        <h2>Will you marry me? ❤️</h2>
+        <button onclick="yesClicked()">Yes!</button>
+        <button id="no-btn" onclick="noClicked()">No</button>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function yesClicked() {
+            alert("Yayyyy 🎀😳💕");
+            document.getElementById("popup").style.display = "none";
+        }
+
+        let noSize = 16;
+        function noClicked() {
+            let noBtn = document.getElementById("no-btn");
+            noSize += 5;
+            noBtn.style.fontSize = noSize + "px";
+
+            if (noSize > 50) {
+                noBtn.style.display = "none"; // Make it disappear
+            }
+        }
+    </script>
+
+</body>
+</html>
